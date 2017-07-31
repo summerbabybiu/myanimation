@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="init();">
+<canvas id="demoCanvas" width="500" height="300"></canvas>
+<script src="js/easeljs-0.8.2.min.js"></script>
+<script>
+    var distance = 500;
+    var ydistance = 0;
+    function init() {
+        var stage = new createjs.Stage("demoCanvas");
+        var bitmap = new createjs.Bitmap("imgs/230.jpg");
+        var maskShape = new createjs.Shape();
+        maskShape.graphics.beginFill("#ff0000");
+        bitmap.mask = maskShape;
+        stage.addChild(bitmap);
+        bitmap.image.onload = function () {
+            stage.update();
+        };
+        createjs.Ticker.on('tick', function (evt) {
+            if (distance > 0) {
+                distance -= 25;
+                var x = distance;
+                ydistance += 10;
+                var y = ydistance;
+                maskShape.graphics.drawCircle(x, y, 100).closePath();
+                stage.update();
+            }
+        });
+        createjs.Ticker.setFPS(40);
+    }
+</script>
+</body>
+</html>
