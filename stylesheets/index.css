@@ -1,0 +1,235 @@
+/* line 1, ../sass/index.scss */
+.main {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: auto;
+  overflow: hidden;
+}
+/* line 8, ../sass/index.scss */
+.main .flower {
+  position: absolute;
+  width: 27px;
+  height: 26px;
+  top: 0;
+  left: 0;
+  background: url("../imgs/flower.png") no-repeat;
+  background-size: 27px;
+}
+/* line 17, ../sass/index.scss */
+.main .flower-cover {
+  position: absolute;
+  width: 27px;
+  height: 26px;
+  animation: down 10s linear infinite;
+}
+
+/* line 29, ../sass/index.scss */
+.flower0 {
+  animation: flower0 5s linear infinite;
+}
+
+@keyframes flower0 {
+  0% {
+    transform: rotate(50deg);
+  }
+  100% {
+    transform: rotate(410deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower1 {
+  animation: flower1 5s linear infinite;
+}
+
+@keyframes flower1 {
+  0% {
+    transform: rotate(94deg);
+  }
+  100% {
+    transform: rotate(454deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower2 {
+  animation: flower2 5s linear infinite;
+}
+
+@keyframes flower2 {
+  0% {
+    transform: rotate(126deg);
+  }
+  100% {
+    transform: rotate(486deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower3 {
+  animation: flower3 5s linear infinite;
+}
+
+@keyframes flower3 {
+  0% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(420deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower4 {
+  animation: flower4 5s linear infinite;
+}
+
+@keyframes flower4 {
+  0% {
+    transform: rotate(30deg);
+  }
+  100% {
+    transform: rotate(390deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower5 {
+  animation: flower5 5s linear infinite;
+}
+
+@keyframes flower5 {
+  0% {
+    transform: rotate(109deg);
+  }
+  100% {
+    transform: rotate(469deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower6 {
+  animation: flower6 5s linear infinite;
+}
+
+@keyframes flower6 {
+  0% {
+    transform: rotate(139deg);
+  }
+  100% {
+    transform: rotate(499deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower7 {
+  animation: flower7 5s linear infinite;
+}
+
+@keyframes flower7 {
+  0% {
+    transform: rotate(151deg);
+  }
+  100% {
+    transform: rotate(511deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower8 {
+  animation: flower8 5s linear infinite;
+}
+
+@keyframes flower8 {
+  0% {
+    transform: rotate(58deg);
+  }
+  100% {
+    transform: rotate(418deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower9 {
+  animation: flower9 5s linear infinite;
+}
+
+@keyframes flower9 {
+  0% {
+    transform: rotate(96deg);
+  }
+  100% {
+    transform: rotate(456deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower10 {
+  animation: flower10 5s linear infinite;
+}
+
+@keyframes flower10 {
+  0% {
+    transform: rotate(112deg);
+  }
+  100% {
+    transform: rotate(472deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower11 {
+  animation: flower11 5s linear infinite;
+}
+
+@keyframes flower11 {
+  0% {
+    transform: rotate(42deg);
+  }
+  100% {
+    transform: rotate(402deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower12 {
+  animation: flower12 5s linear infinite;
+}
+
+@keyframes flower12 {
+  0% {
+    transform: rotate(47deg);
+  }
+  100% {
+    transform: rotate(407deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower13 {
+  animation: flower13 5s linear infinite;
+}
+
+@keyframes flower13 {
+  0% {
+    transform: rotate(142deg);
+  }
+  100% {
+    transform: rotate(502deg);
+  }
+}
+/* line 29, ../sass/index.scss */
+.flower14 {
+  animation: flower14 5s linear infinite;
+}
+
+@keyframes flower14 {
+  0% {
+    transform: rotate(50deg);
+  }
+  100% {
+    transform: rotate(410deg);
+  }
+}
+@keyframes down {
+  0% {
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+  33% {
+    transform: matrix(1, 0, 0, 1, 50, 173);
+  }
+  66% {
+    transform: matrix(1, 0, 0, 1, 0, 346);
+  }
+  100% {
+    transform: matrix(1, 0, 0, 1, -50, 520);
+  }
+}
