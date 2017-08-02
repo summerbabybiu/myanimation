@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body onload="init();">
+<canvas id="demoCanvas" width="500" height="500"></canvas>
+<script src="js/easeljs-0.8.2.min.js"></script>
+<script>
+  function init() {
+    var width = 414; //should be image width
+    var height = 414; // image height
+    var brushRadius = Math.floor((width * height) / 3 / Math.sqrt(Math.pow(width, 2) + Math.pow(height, 2)));//取整;
+    console.log(brushRadius);
+    var ratio = width / height;
+    // p1 -> p2 p3 -> p4 p5 ->6
+    var point1 = { x: 1/3 * width, y: 0};
+    var point2 = { x: 0, y: 1/3 * height};
+    var point3 = { x: 0, y: height};
+    var point4 = { x: width, y: 0};
+    var point5 = { x: width, y: 2/3 * height};
+    var point6 = { x: 2/3 * width, y: height};
+
+    var duration = 48;
+    var xdistance = width / duration;
+    var ydistance = height / duration;
+    var stage = new createjs.Stage("demoCanvas");
+    var bitmap = new createjs.Bitmap("imgs/230.jpg");
+    var maskShape = new createjs.Shape();
+    maskShape.graphics.beginFill("#000000");
+    bitmap.mask = maskShape;
+    stage.addChild(bitmap);
+    bitmap.image.onload = function () {
+      stage.update();
+    };
+    createjs.Ticker.on('tick', function (evt) {
+      if (duration <= 0) {
+        if (bitmap.mask !== null) {
+          bitmap.mask = null;
+          stage.update();
+          createjs.Ticker.removeAllEventListeners();
+        }
+        return;
+      }
+      var x = 0;
+      var y = 0;
+      if (duration <= 48 && duration > 32) {
+        var offset = 48 - duration;
+        x = point1.x - xdistance * offset;
+        y = point1.y + ydistance * offset;
+      } else if (duration <= 32 && duration > 16) {
+        var offset = 32 - duration;
+        x = point3.x + xdistance * offset * 3;
+        y = point3.y - ydistance * offset * 3;
+      } else {
+        var offset = 16 - duration;
+        x = point5.x - xdistance * offset;
+        y = point5.y + ydistance * offset;
+      }
+      maskShape.graphics.drawCircle(x, y, brushRadius).closePath();
+      duration -= 1;
+      stage.update();
+    });
+    createjs.Ticker.setFPS(40);
+  }
+</script>
+</body>
+</html>
