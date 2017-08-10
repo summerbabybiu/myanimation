@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body onload="init();">
+<canvas id="demoCanvas" width="500" height="400"></canvas>
+<script src="js/easeljs-0.8.2.min.js"></script>
+<script src="https://code.createjs.com/tweenjs-0.6.2.min.js"></script>
+
+</body>
+<script>
+    /*
+    window.onload = function(){
+        var myCanvas = document.getElementById('myCanvas');
+        var ctx = myCanvas.getContext('2d');
+        var angleSpeed = 0;
+        var x = myCanvas.width/2;
+        var y = myCanvas.height;
+        var x1 = myCanvas.width/2;
+        //平滑上下移动的方块
+        (function jump(){
+            setTimeout(jump,1500/60);
+            ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
+            //改变y的值，y值其实在250+50*[-1,1]之间变动,50其实就是波动范围
+            x = myCanvas.height/2 + Math.sin(angleSpeed)*5;
+
+            y -= 1; console.log(y);
+            if(y<-50) {
+                y=500;
+            }
+
+            x1 = myCanvas.height/2 + Math.sin(angleSpeed)*30;
+
+            ctx.save();
+
+
+            ctx.beginPath();
+            ctx.translate(x1,y);
+            ctx.fillStyle = "blue";
+            ctx.arc(-200,0,10,0,2*Math.PI);
+            ctx.closePath();
+            ctx.fill();
+//            ctx.restore();
+
+
+//            ctx.save();
+
+            ctx.beginPath();
+            ctx.translate(x,y);
+            ctx.fillStyle = "red";
+            ctx.arc(200,0,5,0,2*Math.PI);
+            ctx.closePath();
+            ctx.fill();
+
+
+            ctx.restore();
+            angleSpeed += 0.1;
+        }());
+
+
+    }
+    */
+
+
+
+
+    function init() {
+        var can = document.getElementById('demoCanvas');
+        var stage = new createjs.Stage("demoCanvas");
+        createjs.Ticker.addEventListener("tick", handleTick);
+        createjs.Ticker.setFPS(60);
+
+        console.log('ww');
+        var circleArray =[];
+        var yspeed = [];
+        var xrang = [];
+        var xrang2 = [];
+
+
+        for(var m =0 ; m<6;m++) {
+            var cirWidth = Math.random()*8+2;
+
+            circleArray[m] = new createjs.Shape();
+            circleArray[m] .graphics.beginFill("DeepSkyBlue").drawCircle(0, 0, cirWidth);
+            circleArray[m] .x = Math.random()*500;
+            circleArray[m] .y = Math.random()*400;
+            stage.addChild(circleArray[m]);
+            console.log(circleArray[m]);
+            yspeed[m] = Math.random()+0.1;
+            xrang[m] = Math.random()*40+10;
+            xrang2[m] = cirWidth/2;
+
+            circleArray[m].addEventListener("click", function(event){
+            createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
+
+//            createjs.Tween.get(circleArray[m]).wait(500).to({alpha:0, visible:false}, 1000);
+
+
+
+            });
+
+        };
+
+//        stage.update();
+
+        var angleSpeed =0;
+        var ap = 1;
+
+        function handleTick(event){
+        if(!event.paused){
+
+            for(var m =0 ; m<6;m++) {
+                circleArray[m].y -= yspeed[m];
+                if(m%2==0){
+                    circleArray[m].x = can.width - xrang[m] + xrang2[m]*Math.cos(angleSpeed/2);
+                }
+                circleArray[m].x = can.width - xrang[m] + xrang2[m]*Math.sin(angleSpeed/4);
+
+                if(circleArray[m].y < -20){
+                    circleArray[m].y = can.height;
+                }
+            }
+            angleSpeed += 0.1;
+        }
+        stage.update();
+    }
+    }
+
+</script>
+</html>
